@@ -16,6 +16,14 @@ with st.sidebar:
     execute = st.checkbox("Execute actions (submit PO)", value=False)
 
     run_btn = st.button("Run Agent")
+    
+import datetime
+
+if run_btn:
+    st.session_state["last_run_click"] = datetime.datetime.utcnow().isoformat()
+
+if "last_run_click" in st.session_state:
+    st.info(f"Run Agent clicked at (UTC): {st.session_state['last_run_click']}")
 
 scenario = {
     "fleet_size": int(fleet_size),
