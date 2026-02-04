@@ -39,4 +39,3 @@ def forecast_claims(fleet_df: pd.DataFrame, horizon_days: int, weather="normal",
     claims["total_loss"] = rng.random(len(claims)) < tl_prob
 
     return claims
-``
