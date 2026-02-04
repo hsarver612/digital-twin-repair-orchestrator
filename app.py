@@ -86,4 +86,3 @@ if not parts_summary.empty:
         st.code(po_to_json(confirmed), language="json")
 else:
     st.write("No parts to procure.")
-``
