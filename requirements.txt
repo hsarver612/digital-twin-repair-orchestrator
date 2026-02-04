@@ -4,3 +4,5 @@ numpy
 plotly
 faker
 pydeck
+lyzr-python-sdk
+requests
