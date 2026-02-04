@@ -35,8 +35,16 @@ scenario = {
 }
 
 if run_btn:
-    result = run_agent_loop(goal=goal, scenario=scenario, execute_actions=execute)
-    st.session_state["agent_result"] = result
+    try:
+        result = run_agent_loop(goal=goal, scenario=scenario, execute_actions=execute)
+        st.session_state["agent_result"] = result
+    except Exception as e:
+        st.error("Run Agent crashed. Full exception below:")
+        st.exception(e)  # <-- This prints the real traceback in the UI
+        st.session_state["agent_result"] = {
+            "status": "ERROR",
+            "final": {"exception": str(e)}
+        }
 
 if "agent_result" not in st.session_state:
     st.info("Click **Run Agent** to start the Lyzr-controlled agent loop.")
